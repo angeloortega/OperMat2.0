@@ -9,6 +9,12 @@ public class Matriz{
 
     public Matriz(String n, int[][] v) {
         int index = -1;
+        if(n.equals("auxiliar"))
+        {
+            nombre = n;
+            valor = v;
+            return;
+        }
         for(int i = 0; i < Auxiliar.matrices.size(); i++)
         {
             if(Auxiliar.matrices.get(i).getName().equals(n))
@@ -28,13 +34,42 @@ public class Matriz{
 
     public String getName() {return nombre;}
 
-    public int[][] transpuesta()
-    {
-        return valor;
+    public static boolean existe(String n){
+        n = n.trim();
+        for (int i = 0; i < Auxiliar.matrices.size(); i++) {
+            if (Auxiliar.matrices.get(i).getName().equals(n)) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    public int[][] suma(Matriz obj2) {
-        return valor;
+    public static Matriz getMatriz(String n) {
+        n = n.trim();
+        for (int i = 0; i < Auxiliar.matrices.size(); i++) {
+            if (Auxiliar.matrices.get(i).getName().equals(n)) {
+                return Auxiliar.matrices.get(i);
+            }
+        }
+        return null;
+    }
+    public static int[][] transpuesta(int[][] m)
+    {
+        int[][] resultado = new int[m[0].length][m.length];
+
+        for(int i = 0; i < m.length; i++)
+
+        {
+
+            for(int j = 0; j < m[0].length; j++)
+
+            {
+
+                resultado[i][j] = m[j][i];
+            }
+
+        }
+        return resultado;
     }
     public int[][] getValor(){return valor;}
 }
