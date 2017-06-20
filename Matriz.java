@@ -1,20 +1,15 @@
 package com.company;
 
-import java.util.*;
+// Clase Matriz donde se crean las matrices y se verifica que si los nombres de las nuevas matrices existen, se reempla
+//cen en memoria
 
 public class Matriz{
 
-    int[][] valor;
+    double[][] valor;
     String nombre;
 
-    public Matriz(String n, int[][] v) {
+    public Matriz(String n, double[][] v) {
         int index = -1;
-        if(n.equals("auxiliar"))
-        {
-            nombre = n;
-            valor = v;
-            return;
-        }
         for(int i = 0; i < Auxiliar.matrices.size(); i++)
         {
             if(Auxiliar.matrices.get(i).getName().equals(n))
@@ -34,6 +29,8 @@ public class Matriz{
 
     public String getName() {return nombre;}
 
+    public void setName(String n) {this.nombre = n;}
+
     public static boolean existe(String n){
         n = n.trim();
         for (int i = 0; i < Auxiliar.matrices.size(); i++) {
@@ -43,7 +40,7 @@ public class Matriz{
         }
         return false;
     }
-
+    //Retorna el objeto matriz utilizando su nombre
     public static Matriz getMatriz(String n) {
         n = n.trim();
         for (int i = 0; i < Auxiliar.matrices.size(); i++) {
@@ -53,9 +50,10 @@ public class Matriz{
         }
         return null;
     }
-    public static int[][] transpuesta(int[][] m)
+    // Retorna el valor transpuesto de una matriz dada
+    public static double[][] transpuesta(double[][] m)
     {
-        int[][] resultado = new int[m[0].length][m.length];
+        double[][] resultado = new double[m[0].length][m.length];
 
         for(int i = 0; i < m.length; i++)
 
@@ -71,5 +69,5 @@ public class Matriz{
         }
         return resultado;
     }
-    public int[][] getValor(){return valor;}
+    public double[][] getValor(){return valor;}
 }

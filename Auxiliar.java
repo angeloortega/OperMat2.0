@@ -3,21 +3,16 @@ package com.company;
 import java.util.*;
 import static java.lang.Math.pow;
 public class Auxiliar {
-
+    // Variables globales para referenciar matrices
     public static ArrayList<Matriz> matrices = new ArrayList<Matriz>();
 
     public ArrayList<Matriz> get() {
         return matrices;
     }
 
-    public static int contador = 0;
-
-    public static int[][] e = new int[10][10];
-
-    public static Matriz matriz_aux = new Matriz("auxiliar", e);
-
-    public static int[][] suma(int[][] m1, int[][] m2) {
-        int[][] resultado = new int[m1.length][m1[0].length];
+    // Suma de matrices
+    public static double[][] suma(double[][] m1, double[][] m2) {
+        double[][] resultado = new double[m1.length][m1[0].length];
 
         if (m1.length == m2.length & m1[0].length == m2[0].length) {
             int i, j;
@@ -42,9 +37,9 @@ public class Auxiliar {
             }
         return resultado;
     }
-
-    public static int[][] resta(int[][] m1, int[][] m2) {
-        int[][] resultado = new int[m1.length][m1[0].length];
+    // Resta de matrices
+    public static double[][] resta(double[][] m1, double[][] m2) {
+        double[][] resultado = new double[m1.length][m1[0].length];
 
         if (m1.length == m2.length & m1[0].length == m2[0].length) {
             int i, j;
@@ -69,9 +64,9 @@ public class Auxiliar {
         }
         return resultado;
     }
-
-    public static int[][] multi(int[][] m1, int[][] m2) {
-        int[][] resultado = new int[m1.length][m2[0].length];
+    // Multiplicación de matrices
+    public static double[][] multi(double[][] m1, double[][] m2) {
+        double[][] resultado = new double[m1.length][m2[0].length];
 
         if (m1[0].length == m2.length) {
             int i, j;
@@ -90,9 +85,9 @@ public class Auxiliar {
         }
         return resultado;
     }
-
-    public static int[][] potencia(int[][] m1, int[][] m2) {
-        int[][] resultado = new int[m1.length][m1[0].length];
+    // Exponenciación de matrices
+    public static double[][] potencia(double[][] m1, double[][] m2) {
+        double[][] resultado = new double[m1.length][m1[0].length];
 
         if (m1.length == m2.length & m1[0].length == m2[0].length) {
             int i, j;
@@ -118,6 +113,7 @@ public class Auxiliar {
         }
         return resultado;
     }
+    // Análisis de string de entrada para determinar las posiciones de los parentesis
     public static ArrayList<Integer> orden(String op, int in, int fin){
         int a = 0;
         int b = 0;
@@ -144,7 +140,7 @@ public class Auxiliar {
         def.add(fin);
         return def;
     }
-
+    // Convierte las potencias en caracteres únicos para poder procesarlos
     public static String normalizar(String op) {
         int a = 0;
         int b = 1;
@@ -162,6 +158,7 @@ public class Auxiliar {
         }
         return op;
     }
+    // Determina la cantidad de apariciones de un operador en el string
     public static int cantidad(String op, char x){
         int cant = 0;
         for (int i=0; i < op.length(); i++)
@@ -173,6 +170,7 @@ public class Auxiliar {
         }
         return cant;
     }
+    // Determina si los paréntesis están completos
     public static boolean parentesis1(String op){
         char s1 = 'x';
         char s2 = 'x';
@@ -192,7 +190,7 @@ public class Auxiliar {
             return false;
         }
     }
-
+    // Quita los parentésis redundantes
     public static String quitarparfin(String op){
         StringBuffer ultimo= new StringBuffer();
         Character caracter0= op.charAt(0);
@@ -207,6 +205,7 @@ public class Auxiliar {
         }
         return op;
     }
+    // Determina que existan operadores validos
     public static boolean operacionesVal(String op){
         for (int i=0; i< op.length(); i++){
             Character actual= op.charAt(i);
@@ -216,6 +215,7 @@ public class Auxiliar {
         }
         return false;
     }
+    // Determina la precedencia utilizando árboles binarios
     public static Precedencia operar(String op) {
         int fin = 0;
         int in = 0;
